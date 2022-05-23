@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  server:
+    build:
+      context: ./nodeapp
+      dockerfile: Dockerfile
+    image: server:v1
+    container_name: nodeexample
+    restart: unless-stopped
+    working_dir: /server
+    ports:
+      - 5000:5000
+    volumes:
+      - ./nodeapp:/server
+
+  app:
+    build:
+      context: ./reactapp
+      dockerfile: Dockerfile
+    image: app:v1
+    container_name: reactexample
+    restart: unless-stopped
+    working_dir: /app
+    ports:
+      - 3000:3000
+    volumes:
+      - ./reactapp:/app

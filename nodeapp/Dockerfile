@@ -1,12 +1,12 @@
 FROM node:current-alpine3.15
 
-WORKDIR /app
+WORKDIR /server
 
 COPY package.json /app/package.json
 
 RUN yarn install
 
-COPY . /app/
+COPY . /server/
 
 CMD ["yarn","start:dev"]
 
